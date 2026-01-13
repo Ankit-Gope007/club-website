@@ -25,7 +25,7 @@
     "dotted-map": "^2.2.3",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
-    "framer-motion": "^10.18.0",
+    "framer-motion": "^12.23.26",
     "konva": "^9.2.3",
     "lodash": "^4.17.21",
     "lottie-react": "^2.4.0",

@@ -11,3 +11,4 @@ export const eventsApi = createApi({
 });
 
 export  const { useFetchEventsQuery } = eventsApi;
+
