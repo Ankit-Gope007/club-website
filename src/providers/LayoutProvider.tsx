@@ -19,7 +19,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* Background Image for all pages */}
-      <div className="fixed inset-0 -z-10">
+      {/* <div className="fixed inset-0 -z-10">
         <Image
           src="/background_image.png"
           alt="Background"
@@ -27,7 +27,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
       
       <div className=" mx-auto">
         <Navbar />

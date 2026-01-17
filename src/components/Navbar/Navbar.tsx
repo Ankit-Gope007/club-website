@@ -111,9 +111,9 @@ function Navbar() {
         </div>
 
         {/* Theme Switcher */}
-        <div className="hidden md:flex items-center">
+        {/* <div className="hidden md:flex items-center">
           <ThemeSwitcher />
-        </div>
+        </div> */}
 
         <div
           className="md:hidden block"

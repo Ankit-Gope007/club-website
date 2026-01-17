@@ -9,6 +9,7 @@ import SectionTitle from "@/components/Title";
 import { placeholder } from "@/assets";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import DataLoader from "@/components/loading/DataLoader";
+import { PixelatedCanvas } from "@/components/ui/pixelated-canvas";
 
 function MembersPage() {
   const { data, isLoading, error } = useFetchMembersQuery({});
@@ -33,6 +34,7 @@ function MembersPage() {
   const firstYearMembers = data.filter((member) => member.year_name === 1);
 
   const renderMemberCards = (members) => {
+    console.log(members[0].image);
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
         {members
@@ -40,22 +42,43 @@ function MembersPage() {
           .map((member) => (
             <div
               key={member.id}
-              className={`shadow-lg p-6 rounded-xl bg-gradient-to-r ${
-                member.id % 3 === 0
-                  ? "from-blue-500/5 to-purple-500/5"
-                  : member.id % 3 === 1
+              className={`shadow-lg p-6 rounded-xl bg-gradient-to-r ${member.id % 3 === 0
+                ? "from-blue-500/5 to-purple-500/5"
+                : member.id % 3 === 1
                   ? "from-orange-500/5 to-yellow-500/5"
                   : "from-pink-500/5 to-purple-500/5"
-              }`}
+                }`}
             >
               <div className="flex flex-col items-center mb-4">
-                <Image
-                  src={member.image || placeholder}
-                  alt={`${member.first_name} ${member.last_name}`}
-                  width={160}
-                  height={160}
-                  className="w-24 h-24 object-cover rounded-full mb-4"
-                />
+                <div className="w-24 h-24 mb-4">
+                  {
+
+                    member.image ? (
+                      <PixelatedCanvas
+                        src={member.image}
+                        height={96}
+                        width={96}
+                        cellSize={2}
+                        dotScale={0.9}
+                        shape="square"
+                        backgroundColor="#000000"
+                        dropoutStrength={0.3}
+                        interactive
+                        distortionStrength={2}
+                        distortionRadius={60}
+                        distortionMode="swirl"
+                        followSpeed={0.2}
+                        jitterStrength={3}
+                        jitterSpeed={4}
+                        sampleAverage
+                        tintColor="#FFFFFF"
+                        tintStrength={0.2}
+                        className="rounded-full border-2 border-neutral-800 shadow-lg w-full h-full"
+                      />
+                    ) : console.log("No image available")
+                  }
+
+                </div>
                 <div className="text-xl font-bold text-neutral-600 dark:text-white">
                   {member.first_name} {member.last_name}
                 </div>
@@ -65,6 +88,7 @@ function MembersPage() {
                   </p>
                 )}
               </div>
+
 
               <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
                 <p className="text-gray-600 dark:text-gray-300 mb-2 text-center">
@@ -110,7 +134,7 @@ function MembersPage() {
   };
 
   return (
-    <section className="mt-8 pt-20">
+    <section className="mt-8 pt-20 ">
       <div className="w-[90%] mx-auto">
         <div className="flex flex-col items-center gap-4 text-center">
           <SectionTitle
@@ -118,6 +142,7 @@ function MembersPage() {
             description="No of us is smarter than all of us"
           />
         </div>
+
 
         <div className="mx-auto mt-8 max-w-screen-2xl rounded-2xl bg-muted/70 p-6 lg:p-16">
           <div className="text-center">
