@@ -44,14 +44,11 @@ export function FeatureSteps({
   }, [progress, features.length, autoPlayInterval]);
 
   return (
-    <div className={cn("p-8 md:p-12", className)}>
-      <div className="max-w-7xl mx-auto w-full">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center">
-          {title}
-        </h2>
-
-        <div className="flex flex-colmd:items-center md:grid md:grid-cols-2 gap-6 md:gap-10">
-          <div className="order-2 md:order-1 space-y-8">
+    <div className="container mx-auto px-4 pb-12 pt-4"> {/* Changed from py-12 to pb-12 pt-4 */}
+      <div className="mx-auto max-w-6xl">
+        <h2 className="mb-8 text-center text-3xl font-bold">{title}</h2>
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="flex flex-col justify-center space-y-4">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
