@@ -68,19 +68,19 @@ function MembersPage() {
                     />
                   )}
                 </div>
-                <div className="text-xl font-bold text-neutral-600 dark:text-white">
+                <h3 className="text-lg font-bold text-neutral-600 dark:text-white text-center break-words px-2">
                   {member.first_name} {member.last_name}
-                </div>
+                </h3>
                 {member.bio && (
-                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-2 font-medium text-center ">
+                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-2 font-medium text-center line-clamp-3 px-2">
                     {member.bio}
                   </p>
                 )}
               </div>
 
 
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                <p className="text-gray-600 dark:text-gray-300 mb-2 text-center">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
+                <p className="text-gray-600 dark:text-gray-300 mb-2 text-center text-sm break-words px-2">
                   {member.email}
                 </p>
                 <div className="flex justify-center items-center space-x-4 mt-4">
