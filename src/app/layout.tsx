@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import type { Metadata } from "next";
 import StateProvider from "@/providers/StateProvider";
 import LayoutProvider from "@/providers/LayoutProvider";
+import CustomThemeProvider from "@/providers/Providers";
 
 export const metadata: Metadata = {
   title: {
@@ -20,15 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en scroll-smooth" className="overflow-x-hidden">
+    <html lang="en scroll-smooth" className="overflow-x-hidden" suppressHydrationWarning>
       <body
         data-scroll-container
         className={montserrat.className + "  overflow-x-hidden"}
         id="page-wrap no-scrollbar relative"
       >
-        <StateProvider>
-          <LayoutProvider>{children}</LayoutProvider>
-        </StateProvider>
+        <CustomThemeProvider>
+          <StateProvider>
+            <LayoutProvider>{children}</LayoutProvider>
+          </StateProvider>
+        </CustomThemeProvider>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { easeInOut } from "framer-motion";
-import { motion, MotionStyle, Transition } from "motion/react";
+import { motion, MotionStyle, Transition } from "framer-motion";
 
 interface BorderBeamProps {
   /**
@@ -84,9 +84,9 @@ export const BorderBeam = ({
         }}
         transition={{
           repeat: Infinity,
-          type: "linear",
-          ease: easeInOut,
-          duration: {duration: 5},
+          type: "tween",
+          ease: "linear",
+          duration: duration,
           delay: -delay,
           ...transition,
         }}

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import FullScreenLoader from "@/components/loading/FullScreenLoader";
 import Navbar from "@/components/Navbar/Navbar";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,19 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
   }
   return (
     <>
-      <div className=" mx-auto">
+      {/* Background Image for all pages */}
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="/background_image.png"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-background/50" />
+      </div>
+      
+      <div className="mx-auto">
         <Navbar />
       </div>
       {children}

@@ -33,6 +33,7 @@ function MembersPage() {
   const firstYearMembers = data.filter((member) => member.year_name === 1);
 
   const renderMemberCards = (members) => {
+    console.log(members[0].image);
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
         {members
@@ -40,34 +41,46 @@ function MembersPage() {
           .map((member) => (
             <div
               key={member.id}
-              className={`shadow-lg p-6 rounded-xl bg-gradient-to-r ${
-                member.id % 3 === 0
-                  ? "from-blue-500/5 to-purple-500/5"
-                  : member.id % 3 === 1
+              className={`shadow-lg p-6 rounded-xl bg-gradient-to-r ${member.id % 3 === 0
+                ? "from-blue-500/5 to-purple-500/5"
+                : member.id % 3 === 1
                   ? "from-orange-500/5 to-yellow-500/5"
                   : "from-pink-500/5 to-purple-500/5"
-              }`}
+                }`}
             >
               <div className="flex flex-col items-center mb-4">
-                <Image
-                  src={member.image || placeholder}
-                  alt={`${member.first_name} ${member.last_name}`}
-                  width={160}
-                  height={160}
-                  className="w-24 h-24 object-cover rounded-full mb-4"
-                />
-                <div className="text-xl font-bold text-neutral-600 dark:text-white">
-                  {member.first_name} {member.last_name}
+                <div className="w-24 h-24 mb-4 relative">
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={`${member.first_name} ${member.last_name}`}
+                      width={96}
+                      height={96}
+                      className="rounded-full border-2 border-neutral-800 shadow-lg w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={placeholder}
+                      alt="Placeholder"
+                      width={96}
+                      height={96}
+                      className="rounded-full border-2 border-neutral-800 shadow-lg w-full h-full object-cover"
+                    />
+                  )}
                 </div>
+                <h3 className="text-lg font-bold text-neutral-600 dark:text-white text-center break-words px-2">
+                  {member.first_name} {member.last_name}
+                </h3>
                 {member.bio && (
-                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-2 font-medium text-center ">
+                  <p className="text-gray-600 dark:text-gray-300 text-xs mt-2 font-medium text-center line-clamp-3 px-2">
                     {member.bio}
                   </p>
                 )}
               </div>
 
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                <p className="text-gray-600 dark:text-gray-300 mb-2 text-center">
+
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
+                <p className="text-gray-600 dark:text-gray-300 mb-2 text-center text-sm break-words px-2">
                   {member.email}
                 </p>
                 <div className="flex justify-center items-center space-x-4 mt-4">
@@ -110,7 +123,7 @@ function MembersPage() {
   };
 
   return (
-    <section className="mt-8 pt-20">
+    <section className="mt-8 pt-20 relative z-10">
       <div className="w-[90%] mx-auto">
         <div className="flex flex-col items-center gap-4 text-center">
           <SectionTitle
@@ -118,6 +131,7 @@ function MembersPage() {
             description="No of us is smarter than all of us"
           />
         </div>
+
 
         <div className="mx-auto mt-8 max-w-screen-2xl rounded-2xl bg-muted/70 p-6 lg:p-16">
           <div className="text-center">

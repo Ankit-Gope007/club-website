@@ -37,7 +37,7 @@ function TimelinePage() {
   if (isLoading) return <DataLoader text="Loading Timeline Data..." />;
   if (!data) return <div>No data</div>;
   return (
-    <div className="w-full">
+    <div className="w-full relative z-10">
       <Timeline data={transformData(data)} />
     </div>
   );

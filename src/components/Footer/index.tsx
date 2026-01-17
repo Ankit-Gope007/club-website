@@ -2,6 +2,7 @@
 
 import { useFetchContactQuery } from "@/store/slices/contactSlice";
 import React from "react";
+import Image from "next/image";
 import { AnimatedTooltip } from "../ui/animated-tooltip";
 import {
   Facebook,
@@ -13,7 +14,6 @@ import {
   Linkedin,
   Code,
 } from "lucide-react";
-import Image from "next/image";
 import { logo } from "@/assets";
 import { Particles } from "../magicui/particles";
 import Link from "next/link";
@@ -226,9 +226,11 @@ export default function Footer() {
           </ul>
           {/* Google Play Button */}
           <Link href="https://play.google.com/store" className="mt-4">
-            <img
+            <Image
               src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
               alt="Get it on Google Play"
+              width={160}
+              height={60}
               className="w-40"
             />
           </Link>

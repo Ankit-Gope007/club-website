@@ -14,9 +14,11 @@ function AndroidApp() {
         </p>
         {/* Call to Action Button */}
         <a href="https://play.google.com/store/apps/details?id=com.nitdlug.app" className="mt-4">
-          <img
+          <Image
             src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
             alt="Get it on Google Play"
+            width={160}
+            height={60}
             className="w-40"
           />
         </a>

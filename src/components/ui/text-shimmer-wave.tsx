@@ -70,11 +70,12 @@ export function TextShimmerWave({
               ],
             }}
             transition={{
-              duration: {duration: 20},
+              duration: 20,
               repeat: Infinity,
               repeatDelay: (children.length * 0.05) / spread,
               delay,
-              type: 'easeInOut',
+              type: 'tween',
+              ease: 'easeInOut',
               ...transition,
             }}
           >

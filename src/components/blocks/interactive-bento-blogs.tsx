@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -139,14 +140,14 @@ const MediaItem = ({
   }
 
   return (
-    <img
-      src={item.bg} // Image source URL
-      alt={item.title} // Alt text for the image
-      className={`${className} object-cover cursor-pointer`} // Style the image
-      onClick={onClick} // Trigger onClick when the image is clicked
-      loading="lazy" // Lazy load the image for performance
-      decoding="async" // Decode the image asynchronously
-    />
+    <div className={`${className} relative cursor-pointer`} onClick={onClick}>
+      <Image
+        src={item.bg}
+        alt={item.title}
+        fill
+        className="object-cover"
+      />
+    </div>
   );
 };
 
@@ -228,9 +229,11 @@ const GalleryModal = ({
                     {selectedItem.desc}
                   </p>
                   <div className="flex items-center mt-2">
-                    <img
+                    <Image
                       src={selectedItem.user.profile_image_90}
                       alt={selectedItem.user.name}
+                      width={24}
+                      height={24}
                       className="w-6 h-6 rounded-full mr-2"
                     />
                     <div>
@@ -469,9 +472,11 @@ const InteractiveBentoBlogs: React.FC<InteractiveBentoBlogsProps> = ({
                       {item.desc}
                     </p>
                     <div className="flex items-center mt-2 z-40">
-                      <img
+                      <Image
                         src={item.user.profile_image_90}
                         alt={item.user.name}
+                        width={24}
+                        height={24}
                         className="w-6 h-6 rounded-full mr-2"
                       />
                       <div>

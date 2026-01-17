@@ -52,7 +52,7 @@ function BlogsPage() {
   }));
 
   return (
-    <div className="w-[90%] mx-auto flex flex-col gap-10 mt-8 pt-20">
+    <div className="w-[90%] mx-auto flex flex-col gap-10 mt-8 pt-20 relative z-10">
       <SectionTitle
         title="Our Blogs"
         description="We regulary post blogs on our website"
