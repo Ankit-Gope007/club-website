@@ -9,7 +9,6 @@ import SectionTitle from "@/components/Title";
 import { placeholder } from "@/assets";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import DataLoader from "@/components/loading/DataLoader";
-import { PixelatedCanvas } from "@/components/ui/pixelated-canvas";
 
 function MembersPage() {
   const { data, isLoading, error } = useFetchMembersQuery({});
@@ -50,34 +49,24 @@ function MembersPage() {
                 }`}
             >
               <div className="flex flex-col items-center mb-4">
-                <div className="w-24 h-24 mb-4">
-                  {
-
-                    member.image ? (
-                      <PixelatedCanvas
-                        src={member.image}
-                        height={96}
-                        width={96}
-                        cellSize={2}
-                        dotScale={0.9}
-                        shape="square"
-                        backgroundColor="#000000"
-                        dropoutStrength={0.3}
-                        interactive
-                        distortionStrength={2}
-                        distortionRadius={60}
-                        distortionMode="swirl"
-                        followSpeed={0.2}
-                        jitterStrength={3}
-                        jitterSpeed={4}
-                        sampleAverage
-                        tintColor="#FFFFFF"
-                        tintStrength={0.2}
-                        className="rounded-full border-2 border-neutral-800 shadow-lg w-full h-full"
-                      />
-                    ) : console.log("No image available")
-                  }
-
+                <div className="w-24 h-24 mb-4 relative">
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={`${member.first_name} ${member.last_name}`}
+                      width={96}
+                      height={96}
+                      className="rounded-full border-2 border-neutral-800 shadow-lg w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={placeholder}
+                      alt="Placeholder"
+                      width={96}
+                      height={96}
+                      className="rounded-full border-2 border-neutral-800 shadow-lg w-full h-full object-cover"
+                    />
+                  )}
                 </div>
                 <div className="text-xl font-bold text-neutral-600 dark:text-white">
                   {member.first_name} {member.last_name}
@@ -134,7 +123,7 @@ function MembersPage() {
   };
 
   return (
-    <section className="mt-8 pt-20 ">
+    <section className="mt-8 pt-20 relative z-10">
       <div className="w-[90%] mx-auto">
         <div className="flex flex-col items-center gap-4 text-center">
           <SectionTitle

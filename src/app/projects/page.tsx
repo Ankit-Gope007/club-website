@@ -41,7 +41,7 @@ function ProjectPage() {
     );
 
   return (
-    <div className="p-6 pt-24">
+    <div className="p-6 pt-24 relative z-10">
       <SectionTitle
         title="Our Projects"
         description="Explore our open source projects"

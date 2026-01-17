@@ -40,7 +40,7 @@ function EventsPage() {
     );
 
   return (
-    <div className="p-6 pt-24">
+    <div className="p-6 pt-24 relative z-10">
       <SectionTitle
         title="Our Events"
         description="Check out our upcoming events"
