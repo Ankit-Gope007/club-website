@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import SectionTitle from "@/components/Title";
 
 function FacultyAdvisorsPage() {
   const facultyAdvisors = [
@@ -20,12 +21,12 @@ function FacultyAdvisorsPage() {
   ];
 
   return (
-    <div>
+    <div className="relative z-10">
       {/* Main Content */}
       <section className="pt-32 pb-8">
         <div className="w-[90%] max-w-6xl mx-auto">
           {/* Title Section */}
-          <div className="text-center mb-16">
+          {/* <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Meet{" "}
               <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-purple-600 bg-clip-text text-transparent">
@@ -38,7 +39,11 @@ function FacultyAdvisorsPage() {
             <p className="text-xl text-gray-600 dark:text-gray-300">
               Our Biggest Supporters
             </p>
-          </div>
+          </div> */}
+          <SectionTitle
+                  title="Our Faculty Advisors"
+                  description="Our Biggest Supporters"
+                />
 
           {/* Faculty Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">

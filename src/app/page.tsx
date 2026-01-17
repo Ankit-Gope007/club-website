@@ -17,7 +17,7 @@ function HomePage() {
  
   return (
     <>
-      <div className="snap-y  overflow-y-auto ">
+      <div className="snap-y overflow-y-auto relative z-10">
         <LandingComponent />
         <Trailer />
         <AboutUs />

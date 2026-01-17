@@ -103,7 +103,7 @@ function Navbar() {
             </Link>
           ))}
         </div>
-        {/* Login button hidden for now
+        {/* Login button hidden for now */}
         <div
           onClick={() => {
             window.open("https://admin.nitdgplug.org", "_blank");
@@ -113,7 +113,7 @@ function Navbar() {
           {" "}
           Login
         </div>
-        */}
+       
 
         {/* Theme Switcher */}
         {/* <div className="hidden md:flex items-center">
