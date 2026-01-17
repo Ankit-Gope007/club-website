@@ -24,7 +24,7 @@ export const StickyScroll = ({
   const cardLength = content.length;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
+    const cardsBreakpoints = content.map((_, index) => (index / cardLength) * 0.85);
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
         const distance = Math.abs(latest - breakpoint);
@@ -35,7 +35,13 @@ export const StickyScroll = ({
       },
       0
     );
-    setActiveCard(closestBreakpointIndex);
+    
+    // Ensure the last card is activated when scrolled near the end
+    if (latest > 0.6 && closestBreakpointIndex < cardLength - 1) {
+      setActiveCard(cardLength - 1);
+    } else {
+      setActiveCard(closestBreakpointIndex);
+    }
   });
 
   const backgroundColors = [
@@ -63,13 +69,13 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      className="h-[40rem] overflow-y-auto flex justify-center w-full relative rounded-md p-10"
+      className="h-[50rem] overflow-y-auto flex justify-center w-full relative rounded-md p-4 md:p-6"
       ref={ref}
     >
-      <div className=" relative flex w-full  items-start  justify-center px-4">
-        <div className="md:w-1/2">
+      <div className=" relative flex w-full  items-start  justify-center px-2 md:px-4">
+        <div className="md:w-1/2 w-full">
           {content.map((item, index) => (
-            <div key={item.title + index} className="my-20">
+            <div key={item.title + index} className="my-12 md:my-16">
               <motion.h2
                 initial={{
                   opacity: 0,
@@ -87,20 +93,21 @@ export const StickyScroll = ({
                 }}
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
+                  color: activeCard === index ? "rgb(0, 0, 0)" : "rgb(107, 114, 128)",
                 }}
-                className="text-lg dark:text-slate-300 text-gray-700  mt-10"
+                className="text-base md:text-lg dark:text-slate-300 mt-4 md:mt-6 leading-relaxed"
               >
                 {item.description}
               </motion.p>
             </div>
           ))}
-          <div className="h-40" />
+          <div className="h-96" />
         </div>
       </div>
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "hidden lg:block w-1/2 rounded-md bg-white sticky top-10 overflow-hidden",
+          "hidden lg:block w-1/2 rounded-md bg-white sticky top-10 overflow-hidden h-[45rem]",
           contentClassName
         )}
       >

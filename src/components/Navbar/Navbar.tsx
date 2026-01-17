@@ -17,6 +17,7 @@ function Navbar() {
     { url: "/projects", name: "Projects" },
     { url: "/linit", name: "Linit" },
     { url: "/members", name: "Members" },
+    { url: "/faculty-advisors", name: "Fac Ad" },
     { url: "https://mukti.nitdgplug.org/", name: "Mukti 2025" },
   ];
 
