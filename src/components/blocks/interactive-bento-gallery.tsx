@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react';
 
@@ -119,14 +120,14 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
     }
 
     return (
-        <img
-            src={item.url} // Image source URL
-            alt={item.title} // Alt text for the image
-            className={`${className} object-cover cursor-pointer`} // Style the image
-            onClick={onClick} // Trigger onClick when the image is clicked
-            loading="lazy" // Lazy load the image for performance
-            decoding="async" // Decode the image asynchronously
-        />
+        <div className={`${className} relative cursor-pointer`} onClick={onClick}>
+            <Image
+                src={item.url}
+                alt={item.title}
+                fill
+                className="object-cover"
+            />
+        </div>
     );
 };
 
