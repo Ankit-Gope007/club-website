@@ -24,10 +24,10 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
           src="/background_image.png"
           alt="Background"
           fill
-          className="object-cover opacity-70"
+          className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-background/80" />
+        <div className="absolute inset-0 bg-background/50" />
       </div>
       
       <div className="mx-auto">
