@@ -84,9 +84,9 @@ export const BorderBeam = ({
         }}
         transition={{
           repeat: Infinity,
-          type: "linear",
-          ease: easeInOut,
-          duration: {duration: 5},
+          type: "tween",
+          ease: "linear",
+          duration: duration,
           delay: -delay,
           ...transition,
         }}
