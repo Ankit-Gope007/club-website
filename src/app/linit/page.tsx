@@ -18,11 +18,6 @@ function LinitPage() {
   const [isViewerOpen, setViewerOpen] = useState(false);
   const [pdf, setPdf] = useState("");
 
-  // Debug logging
-  React.useEffect(() => {
-    console.log("FlipbookViewer state changed - isOpen:", isViewerOpen, "pdfURL:", pdf);
-  }, [isViewerOpen, pdf]);
-
   if (isLoading) return <DataLoader text="Loading Linit editions..." />;
   if (error)
     return (
@@ -113,10 +108,7 @@ function LinitPage() {
 
       <FlipbookViewer
         isOpen={isViewerOpen}
-        onClose={() => {
-          console.log("Closing viewer");
-          setViewerOpen(false);
-        }}
+        onClose={() => setViewerOpen(false)}
         pdfURL={pdf}
       />
     </>
